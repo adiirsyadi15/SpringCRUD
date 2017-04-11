@@ -1,0 +1,41 @@
+body{
+	width: 100%;
+	background-image: url("../images/backgorund.jpg");
+	background-repeat: no-repeat;
+  	background-size: 100%;
+	
+}
+
+.navbar {
+	background-color: rgba(34, 34, 34, 0.7);
+	background-color: rgba(8, 8, 8, 0.39);
+	box-shadow: box-shadow: 10px 10px;
+}
+
+a {
+   color: #f5f5f5;
+}
+a:hover {
+   color: #2e2e2e;
+}
+
+.content{
+	margin-top: 70px;
+}
+
+.main-content .thumbnail{
+	background: rgba(255, 255, 255, 0.86);
+	border: none;
+	text-align: center;
+}
+.main-content .thumbnail img{
+	height: 200px;
+}
+
+.panel-default{
+	background: rgba(252, 248, 227, 0.88);
+}
+
+.link tr td a{
+	color: gray !important;
+}
