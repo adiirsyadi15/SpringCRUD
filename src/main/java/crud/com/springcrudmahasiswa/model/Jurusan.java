@@ -18,12 +18,13 @@ public class Jurusan implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	private String jurusan;
+	private String nama;
 
-	private String nomerjurusan;
+	@Column(name="no_jur")
+	private String noJur;
 
 	//bi-directional many-to-one association to Mahasiswa
-	@OneToMany(mappedBy="jurusanBean")
+	@OneToMany(mappedBy="jurusan")
 	private List<Mahasiswa> mahasiswas;
 
 	public Jurusan() {
@@ -37,20 +38,20 @@ public class Jurusan implements Serializable {
 		this.id = id;
 	}
 
-	public String getJurusan() {
-		return this.jurusan;
+	public String getNama() {
+		return this.nama;
 	}
 
-	public void setJurusan(String jurusan) {
-		this.jurusan = jurusan;
+	public void setNama(String nama) {
+		this.nama = nama;
 	}
 
-	public String getNomerjurusan() {
-		return this.nomerjurusan;
+	public String getNoJur() {
+		return this.noJur;
 	}
 
-	public void setNomerjurusan(String nomerjurusan) {
-		this.nomerjurusan = nomerjurusan;
+	public void setNoJur(String noJur) {
+		this.noJur = noJur;
 	}
 
 	public List<Mahasiswa> getMahasiswas() {
@@ -63,14 +64,14 @@ public class Jurusan implements Serializable {
 
 	public Mahasiswa addMahasiswa(Mahasiswa mahasiswa) {
 		getMahasiswas().add(mahasiswa);
-		mahasiswa.setJurusanBean(this);
+		mahasiswa.setJurusan(this);
 
 		return mahasiswa;
 	}
 
 	public Mahasiswa removeMahasiswa(Mahasiswa mahasiswa) {
 		getMahasiswas().remove(mahasiswa);
-		mahasiswa.setJurusanBean(null);
+		mahasiswa.setJurusan(null);
 
 		return mahasiswa;
 	}

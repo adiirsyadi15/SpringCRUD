@@ -10,11 +10,11 @@
         <form action="jurusan" method="post">
 		  <div class="form-group">
 		    <label for="Jurusan">Kode</label>
-		    <input type="text" name="nomerjurusan" class="form-control" id="kdjurusan" placeholder="Example: J5555">
+		    <input type="text" name="noJur" class="form-control" id="kdjurusan" placeholder="Example: J5555">
 		  </div>
 		  <div class="form-group">
 		    <label for="Jurusan">Nama</label>
-		    <input type="text" name="jurusan" class="form-control" id="nmjurusan" placeholder="Example: Teknik Informatika">
+		    <input type="text" name="nama" class="form-control" id="nmjurusan" placeholder="Example: Teknik Informatika">
 		  </div>
 		  
         <button type="submit" class="btn btn-primary">Save</button>

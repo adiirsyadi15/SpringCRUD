@@ -18,11 +18,11 @@
         			<input type="hidden" value="${j.id}"/>
 					 <div class="form-group">
 					    <label for="Jurusan">Kode</label>
-					    <input type="text" name="nomerjurusan" class="form-control" id="kdjurusan" value="${j.nomerjurusan }">
+					    <input type="text" name="noJur" class="form-control" id="kdjurusan" value="${j.noJur }">
 					  </div>
 					  <div class="form-group">
 					    <label for="Jurusan">Nama</label>
-					    <input type="text" name="jurusan" class="form-control" id="nmjurusan" value="${j.jurusan }">
+					    <input type="text" name="nama" class="form-control" id="nmjurusan" value="${j.nama }">
 					  </div>
 					<button type="submit" class="btn btn-primary">Save</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

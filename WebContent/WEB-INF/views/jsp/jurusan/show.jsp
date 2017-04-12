@@ -21,11 +21,11 @@
 				  </div>
 		        	<div class="form-group">
 				    <label for="Jurusan">Kode</label>
-				    <p>${ j.nomerjurusan }</p>
+				    <p>${ j.noJur }</p>
 				  </div>
 				  <div class="form-group">
 				    <label for="Jurusan">Nama</label>
-				    <p>${ j.jurusan }</p>
+				    <p>${ j.nama }</p>
 				  </div>
 				</form>
 			</div>

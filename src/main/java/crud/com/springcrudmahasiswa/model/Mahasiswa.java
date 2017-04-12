@@ -23,8 +23,8 @@ public class Mahasiswa implements Serializable {
 
 	//bi-directional many-to-one association to Jurusan
 	@ManyToOne
-	@JoinColumn(name="jurusan")
-	private Jurusan jurusanBean;
+	@JoinColumn(name="id_jurusan")
+	private Jurusan jurusan;
 
 	public Mahasiswa() {
 	}
@@ -53,12 +53,12 @@ public class Mahasiswa implements Serializable {
 		this.nim = nim;
 	}
 
-	public Jurusan getJurusanBean() {
-		return this.jurusanBean;
+	public Jurusan getJurusan() {
+		return this.jurusan;
 	}
 
-	public void setJurusanBean(Jurusan jurusanBean) {
-		this.jurusanBean = jurusanBean;
+	public void setJurusan(Jurusan jurusan) {
+		this.jurusan = jurusan;
 	}
 
 }

@@ -11,7 +11,7 @@
 		  
 		 <input type="hidden" value="${j.id}" />
 		  <div class="form-group">
-		   	<p>apakah anda yakin akan menghapus data ${j.jurusan} ?</p> 
+		   	<p>apakah anda yakin akan menghapus data ${j.nama} ?</p> 
 		   </div>
 		  
         <button type="submit" class="btn btn-primary">Ya</button>

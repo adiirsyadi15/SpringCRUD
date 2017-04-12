@@ -34,7 +34,7 @@
 		                	<td>${mhs.id}</td>
 		                    <td>${mhs.nim}</td>
 		                    <td><a href="mahasiswa/${mhs.id}/show"> ${mhs.nama}</a> </td>
-		                    <td>${mhs.jurusanBean.jurusan}</td>
+		                    <td>${mhs.jurusan.nama}</td>
 		                    <td>
 		                    	<a>edit</a>
 		                    	<button>delete</button>

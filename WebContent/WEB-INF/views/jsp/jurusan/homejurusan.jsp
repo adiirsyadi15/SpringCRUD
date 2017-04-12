@@ -32,8 +32,8 @@
 						<c:forEach items="${listJur}" var="j" >
 		                <tr>
 		                    <td>${j.id}</td>
-		                    <td><a href="jurusan/${j.id}/show"> ${j.nomerjurusan}</a> </td>
-		                    <td>${j.jurusan}</td>
+		                    <td><a href="jurusan/${j.id}/show"> ${j.noJur}</a> </td>
+		                    <td>${j.nama}</td>
 		                    <td>
 		                    	<a href="jurusan/${j.id}">edit</a>
 		                    	<button type="button" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#mdldelete${j.id}">delete</button>
