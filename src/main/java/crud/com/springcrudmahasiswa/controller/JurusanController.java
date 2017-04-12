@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import crud.com.springcrudmahasiswa.DAO.JurusanDAO;
 import crud.com.springcrudmahasiswa.DAOImpl.JurusanDAOImpl;
 import crud.com.springcrudmahasiswa.model.Jurusan;
 
@@ -30,7 +31,7 @@ public class JurusanController {
 	
 	@RequestMapping(value ="/jurusan", method = RequestMethod.POST)
 	public void addJurusan(HttpServletResponse respon, @ModelAttribute("Jurusan")Jurusan j) throws IOException, ServletException{
-		JurusanDAOImpl ji = new JurusanDAOImpl();
+		JurusanDAO ji = new JurusanDAOImpl();
 		ji.insert(j);
 		respon.sendRedirect("jurusan");
 	}

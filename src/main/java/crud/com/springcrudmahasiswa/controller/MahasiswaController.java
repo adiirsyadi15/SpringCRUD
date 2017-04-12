@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import crud.com.springcrudmahasiswa.DAO.JurusanDAO;
+import crud.com.springcrudmahasiswa.DAO.MahasiswaDAO;
 import crud.com.springcrudmahasiswa.DAOImpl.JurusanDAOImpl;
 import crud.com.springcrudmahasiswa.DAOImpl.MahasiswaDAOImpl;
 import crud.com.springcrudmahasiswa.model.Jurusan;
@@ -32,7 +34,7 @@ public class MahasiswaController {
 	public String index(ModelMap modelmap, Model model){
 		
 //		masukkan login attribut untuk model atribut form di jsp
-		model.addAttribute("Mahasiswa", new Mahasiswa());
+//		model.addAttribute("Mahasiswa", new Mahasiswa());
 		
 //		ambil data Mahasiswa untuk display all
 		MahasiswaDAOImpl mi = new MahasiswaDAOImpl();
@@ -53,18 +55,15 @@ public class MahasiswaController {
 	}
 	
 	@RequestMapping(value="mahasiswa", method=RequestMethod.POST)
-	public void add(@ModelAttribute("Mahasiswa") Mahasiswa mahasiswa,HttpServletResponse respon, BindingResult result, @PathVariable("id") Integer id) throws IOException, ServletException{
+	public void add(@ModelAttribute("Mahasiswa") Mahasiswa mahasiswa,HttpServletResponse respon, BindingResult result) throws IOException, ServletException{
 		System.out.println("[info] add mahasiswa");
 		
 		if (result.hasErrors()) {
-            
             System.out.println("errrrrooo");
         }
 		
-		
-		
 		MahasiswaDAOImpl mhs = new MahasiswaDAOImpl();
-		JurusanDAOImpl ji = new JurusanDAOImpl();
+//		JurusanDAOImpl ji = new JurusanDAOImpl();
 		
 		//mahasiswa.setJurusan(jurusan);(ji.getById(id));
 		mhs.insert(mahasiswa);
@@ -82,6 +81,31 @@ public class MahasiswaController {
 		
 	}
 	
+//	Edit Mahasiswa
+	@RequestMapping(value="/mahasiswa/{id}", method=RequestMethod.GET)
+	public String edit(ModelMap modelmap, @PathVariable("id")Integer id){
+//		Jurusan List
+		JurusanDAO ji = new JurusanDAOImpl();
+		List<Jurusan> j = ji.getAll();
+		modelmap.put("jurusanList", j);
+//		data mahasiswa
+		MahasiswaDAO mhs = new MahasiswaDAOImpl();
+		Mahasiswa m = new Mahasiswa();
+		m = mhs.getById(id);
+		modelmap.put("mhs", m);
+		
+		System.out.println("data edit : " + m.getNama());
+		return "mahasiswa/edit";
+	}
+	
+//	update data
+	@RequestMapping(value="/mahasiswa/{id}", method=RequestMethod.POST)
+	public String update(@ModelAttribute("Mahasiswa")Mahasiswa mhs, @PathVariable("id")Integer id){
+		MahasiswaDAOImpl mi = new MahasiswaDAOImpl();
+		mi.update(mhs);
+		
+		return "redirect:/mahasiswa";
+	}
 	
 	@RequestMapping(value="/mahasiswa/{id}/show", method=RequestMethod.GET)
 	public String show(ModelMap modelmap, @PathVariable("id") Integer id){
@@ -92,5 +116,14 @@ public class MahasiswaController {
 		System.out.println("show "+id);
 		
 		return "mahasiswa/show";
+	}
+	
+	@RequestMapping(value="/mahasiswa/{id}/delete", method=RequestMethod.POST)
+	public String delete(@ModelAttribute("Mahasiswa")Mahasiswa mhs, @PathVariable("id") Integer id){
+		MahasiswaDAOImpl mi = new MahasiswaDAOImpl();
+		mhs = mi.getById(id);
+		mi.delete(mhs);
+		System.out.println("delete "+id);
+		return "redirect:/mahasiswa";
 	}
 }

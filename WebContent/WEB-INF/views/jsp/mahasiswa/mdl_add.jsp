@@ -10,28 +10,30 @@
         <h4 class="modal-title" id="mdlmhs">Tambah Mahasiswa</h4>
       </div>
       <div class="modal-body">
-        <form:form method="POST" action="mahasiswa" modelAttribute="Mahasiswa">
+        <form method="POST" action="mahasiswa">
 		  <div class="form-group">
 		    <label for="Jurusan">NIM</label>
-		    <form:input path="nim" class="form-control"/>
+		    <input name="nim" class="form-control"/>
 		  </div>
 		  <div class="form-group">
 		    <label for="Jurusan">Nama</label>
-		    <form:input path="nama" class="form-control"/>
+		    <input name="nama" class="form-control"/>
 		  </div>
 		  <div class="form-group">
 		    <label for="Jurusan">Jurusan</label>
-		    <form:select path="jurusan" class="form-control">
-		    	<form:option value="none" label="---- Select ----"></form:option>
-		    		<form:options items="${jurusanList}" itemValue="id" itemLabel="nama"/>
-		    </form:select>
+		    <select name="jurusan.id" class="form-control">
+		    	<option value="none" label="---- Select ----" />
+		    	<c:forEach items="${jurusanList}" var="j">
+		    	<option value="${ j.id}" label="${j.nama }"/>
+		    	</c:forEach>
+		    </select>
 		  	
 		  </div>
 		  
         <button type="submit" class="btn btn-primary">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         
-		</form:form>
+		</form>
       </div>
       <div class="modal-footer">
 

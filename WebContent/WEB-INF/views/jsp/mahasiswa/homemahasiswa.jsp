@@ -36,10 +36,12 @@
 		                    <td><a href="mahasiswa/${mhs.id}/show"> ${mhs.nama}</a> </td>
 		                    <td>${mhs.jurusan.nama}</td>
 		                    <td>
-		                    	<a>edit</a>
-		                    	<button>delete</button>
-		                    </td>
+		                    	<a href="mahasiswa/${mhs.id }"> edit</a>
+		                   		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mdldelete${mhs.id}">delete</button>
+		                     </td>
 		                </tr>
+		                
+		                <%@include file="mdl_delete.jsp" %>
 		                </c:forEach>
 					</tbody>
 				</table>
