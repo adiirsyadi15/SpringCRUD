@@ -21,7 +21,7 @@
 				  </div>
 		        	<div class="form-group">
 				    <label for="Jurusan">Jurusan</label>
-				    <p>${ mhs.jurusanBean.jurusan }</p>
+				    <p>${ mhs.jurusan.nama }</p>
 				  </div>
 				  <div class="form-group">
 				    <label for="Jurusan">Nama</label>

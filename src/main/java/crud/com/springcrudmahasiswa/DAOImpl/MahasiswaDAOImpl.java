@@ -23,4 +23,10 @@ public class MahasiswaDAOImpl extends GeneralDAOImpl implements MahasiswaDAO{
 		return lm;
 	}
 
+	@Override
+	public List<Mahasiswa> getByJurusan(Integer id) {
+		List<Mahasiswa> lm = em.createQuery("select m from Mahasiswa m where m.jurusan.id = :id").setParameter("id", id).getResultList();
+		return lm;
+	}
+
 }

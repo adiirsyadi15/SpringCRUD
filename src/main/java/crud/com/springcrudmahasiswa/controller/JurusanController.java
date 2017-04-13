@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import crud.com.springcrudmahasiswa.DAO.JurusanDAO;
+import crud.com.springcrudmahasiswa.DAO.MahasiswaDAO;
 import crud.com.springcrudmahasiswa.DAOImpl.JurusanDAOImpl;
+import crud.com.springcrudmahasiswa.DAOImpl.MahasiswaDAOImpl;
 import crud.com.springcrudmahasiswa.model.Jurusan;
+import crud.com.springcrudmahasiswa.model.Mahasiswa;
 
 @Controller
 public class JurusanController {
@@ -43,6 +46,23 @@ public class JurusanController {
 		Jurusan j = ji.getById(id);
 		modelmap.put("j", j);
 	    return "jurusan/show";
+	}
+	
+	@RequestMapping(value="jurusan/{id}/detail", method=RequestMethod.GET)
+	public String showdetail(@PathVariable("id")Integer id, ModelMap modelmap){
+		JurusanDAO ji = new JurusanDAOImpl();
+		MahasiswaDAO mhs = new MahasiswaDAOImpl();
+		Jurusan j = ji.getById(id);
+		List<Mahasiswa> m = mhs.getByJurusan(id);
+		modelmap.put("j", j);
+		// untuk list mahasiswa
+		modelmap.put("mhs", m);
+		System.out.println("id jurusan" + id);
+		for (Mahasiswa mi : m) {
+			System.out.println("list" + mi.getNama());
+		}
+		
+		return "jurusan/show_mhs";
 	}
 	
 	@RequestMapping(value = "/jurusan/{id}", method = RequestMethod.GET)
