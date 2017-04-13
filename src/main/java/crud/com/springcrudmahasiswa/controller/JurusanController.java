@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import crud.com.springcrudmahasiswa.DAO.JurusanDAO;
 import crud.com.springcrudmahasiswa.DAO.MahasiswaDAO;
@@ -33,10 +34,14 @@ public class JurusanController {
 	}
 	
 	@RequestMapping(value ="/jurusan", method = RequestMethod.POST)
-	public void addJurusan(HttpServletResponse respon, @ModelAttribute("Jurusan")Jurusan j) throws IOException, ServletException{
+	public String addJurusan(HttpServletResponse respon, @ModelAttribute("Jurusan")Jurusan j, final RedirectAttributes RedAtt) throws IOException, ServletException{
 		JurusanDAO ji = new JurusanDAOImpl();
 		ji.insert(j);
-		respon.sendRedirect("jurusan");
+		
+		RedAtt.addFlashAttribute("css", "success");
+		RedAtt.addFlashAttribute("msg", "Data Jurusan Berhasil di tambah");
+//		respon.sendRedirect("jurusan");
+		return "redirect:/jurusan";
 	}
 	
 	@RequestMapping(value = "/jurusan/{id}/show", method = RequestMethod.GET)
@@ -84,11 +89,15 @@ public class JurusanController {
 //	    respon.sendRedirect("/jurusan");
 	}
 	@RequestMapping(value="jurusan/{id}/delete", method=RequestMethod.POST)
-	public String deleteJurusan(HttpServletRequest request,HttpServletResponse respon, @ModelAttribute("Jurusan")Jurusan j, @PathVariable("id")Integer id) throws IOException, ServletException{
-		System.out.println("Delete jurusan id"+ j);
+	public String deleteJurusan(HttpServletRequest request,HttpServletResponse respon, @ModelAttribute("Jurusan")Jurusan j, @PathVariable("id")Integer id, final RedirectAttributes RedAtt) throws IOException, ServletException{
 		JurusanDAOImpl ji = new JurusanDAOImpl();
 		j = ji.getById(id);
 		ji.delete(j);
+		
+		RedAtt.addFlashAttribute("jur", j);
+		System.out.println("Delete jurusan id"+ j);
+		RedAtt.addFlashAttribute("msg", "Data Berhasil dihapus");
+		RedAtt.addFlashAttribute("css", "danger");
 		return "redirect:/jurusan";
 //		respon.sendRedirect(request.getContextPath()+"jurusan");
 	}

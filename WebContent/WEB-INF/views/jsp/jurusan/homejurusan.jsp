@@ -19,6 +19,13 @@
 				</h3>
 			</div>
 			<div class="panel-body">
+			
+			<c:if test="${not empty msg}">
+				<div class="alert alert-${css} alert-dismissible" role="alert">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <strong>${jur.nama}</strong> ${msg}
+				</div>
+			</c:if>
 				<table class="table table-striped">
 					<thead>
 						<tr>
